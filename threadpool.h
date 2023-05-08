@@ -99,7 +99,7 @@ void* threadpool< T >::worker( void* arg )
 {
     threadpool* pool = ( threadpool* )arg;
     pool->run();
-    return pool;
+    return pool;  // 执行完任务的线程并不会被销毁，而是返回线程池并等待下一个任务的到来
 }
 
 template< typename T >

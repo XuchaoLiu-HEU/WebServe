@@ -66,16 +66,16 @@ public:
     void process(); // 处理客户端请求
     bool read();// 非阻塞读
     bool write();// 非阻塞写
-    
+
 private:
     void init();    // 初始化连接
     HTTP_CODE process_read();    // 解析HTTP请求
     bool process_write(HTTP_CODE ret);    // 填充HTTP应答
 
     // 下面这一组函数被process_read调用以分析HTTP请求
-    HTTP_CODE parse_request_line(char* text);
-    HTTP_CODE parse_headers(char* text);
-    HTTP_CODE parse_content(char* text);
+    HTTP_CODE parse_request_line(char* text);   // 解析请求首行
+    HTTP_CODE parse_headers(char* text);        // 解析请求头
+    HTTP_CODE parse_content(char* text);        // 解析请求体
     HTTP_CODE do_request();
     char* get_line() { return m_read_buf + m_start_line; }
     LINE_STATUS parse_line();
